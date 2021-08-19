@@ -1,0 +1,9 @@
+
+<perfect-scrollbar style="height: calc(100% - 30px);">
+  <div fxLayout="column">
+    <div *ngIf="iconOnly" style="height: 80px;" fxLayoutAlign="space-around center">
+      <img width="35" height="35" src="assets/gravatar.svg">
+    </div>
+    <app-sidemenu-item *ngFor="let menu of menus" [menu]="menu" [iconOnly]="iconOnly"></app-sidemenu-item>
+  </div>
+</perfect-scrollbar>

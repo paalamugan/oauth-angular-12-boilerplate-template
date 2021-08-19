@@ -1,0 +1,32 @@
+<mat-sidenav-container fullscreen *ngIf="!isLoading">
+  <mat-sidenav [mode]="sideNavMode" class="sidenav" #sidenav [opened]="sideNavOpened" style="overflow: hidden;">
+      
+    <mat-toolbar color="primary">
+      <img src="assets/gravatar.svg" class="w-10 h-10 mr-2">
+      <span>APP LOGO</span>
+    </mat-toolbar>
+  
+    <app-sidemenu></app-sidemenu>
+  </mat-sidenav>
+  
+  <mat-sidenav-content style="z-index: unset; overflow: hidden;">
+    <mat-drawer-container fullscreen>
+      <mat-drawer mode="side" #drawer class="drawer" [opened]="matDrawerOpened" style="overflow: hidden;">
+        <app-sidemenu [iconOnly]="true"></app-sidemenu>
+      </mat-drawer>
+      <mat-drawer-content style="overflow: hidden;">
+
+        <app-toolbar [sidenav]="sidenav" [drawer]="drawer" [sidebar]="sidenav2" [matDrawerShow]="matDrawerShow" style="z-index: 500"></app-toolbar>
+
+        <perfect-scrollbar style="height: calc(100% - 30px); background: #e8eaf6;" class="p-3">
+          <router-outlet></router-outlet>
+        </perfect-scrollbar>
+      
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav2 position="end" mode="over">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+</mat-sidenav-container>
