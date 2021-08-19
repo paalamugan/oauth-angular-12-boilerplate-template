@@ -3,7 +3,7 @@ module.exports = {
   // mode: 'jit',
   important: '#app',
   purge: {
-    enabled: process.env.NODE_ENV === 'production',
+    enabled: process.env.NODE_ENV !== 'production', // If enabled is true, it will only build with used classes in that tailwind css. Its reduce a file size 
     content: [
       './src/**/*.{html,ts}',
     ]
