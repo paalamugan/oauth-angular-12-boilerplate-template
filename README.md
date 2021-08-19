@@ -5,9 +5,9 @@
 
 - Reference
 
- [Learn FlexLayout](https://github.com/angular/flex-layout)
- [Learn Angular Material](https://material.angular.io/)
- [Learn Tailwind](https://tailwindcss.com/)
+- [Learn FlexLayout](https://github.com/angular/flex-layout)
+- [Learn Angular Material](https://material.angular.io/)
+- [Learn Tailwind](https://tailwindcss.com/)
 
 ## Get Started
 
