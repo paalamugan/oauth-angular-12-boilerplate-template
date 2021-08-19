@@ -1,9 +1,8 @@
 # OAuth Angular-12 Boilerplate Template
 
 ## Before Get Started
-- Need to understand how to use angular material, angular flex-layout and tailwind css.
 
-- Reference
+**Need to understand how to use angular material, angular flex-layout and tailwind css.**
 
 - [Learn FlexLayout](https://github.com/angular/flex-layout)
 - [Learn Angular Material](https://material.angular.io/)
