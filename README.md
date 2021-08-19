@@ -21,7 +21,7 @@ npm: 6.14.14
 nvm use
 ```
 
-## install Dependencies
+## Install Dependencies
 
 ```sh
 npm install
