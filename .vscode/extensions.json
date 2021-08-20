@@ -3,6 +3,7 @@
       "heybourn.headwind",
       "johnpapa.angular2",
       "bradlc.vscode-tailwindcss",
-      "austenc.tailwind-docs"
+      "austenc.tailwind-docs",
+      "esbenp.prettier-vscode",
     ]
   }
