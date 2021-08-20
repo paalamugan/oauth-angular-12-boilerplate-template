@@ -1,18 +1,72 @@
-<mat-nav-list [style.maxHeight]="(menu.open)? '1200px' : '56px'"  [ngClass]="{'secondaryMenu': secondaryMenu, 'primary': !secondaryMenu}">
-  <mat-list-item *ngIf = "menu.link==false" (click)="menu.open = !menu.open" >
-      <mat-icon matListIcon iconsmall [svgIcon]="menu.icon"></mat-icon>
-      <h3 matLine *ngIf="!iconOnly">{{ menu.name }} </h3>
-      <!-- <mat-chip-list *ngIf="menu?.chip && !iconOnly">
+<mat-nav-list
+  [style.maxHeight]="menu.open ? '1200px' : '56px'"
+  [ngClass]="{ secondaryMenu: secondaryMenu, primary: !secondaryMenu }"
+>
+  <!--without router-->
+  <mat-list-item *ngIf="menu?.sub?.length" (click)="menu.open = !menu.open">
+    <mat-icon
+      matListIcon
+      iconsmall
+      [svgIcon]="menu.svgIcon"
+      [matTooltip]="iconOnly ? menu.tooltip : ''"
+      *ngIf="menu.svgIcon"
+    ></mat-icon>
+
+    <mat-icon
+      matListIcon
+      iconsmall
+      [matTooltip]="iconOnly ? menu.tooltip : ''"
+      *ngIf="!menu.svgIcon && menu.icon"
+    >
+      {{ menu.icon }}
+    </mat-icon>
+
+    <h3 matLine *ngIf="!iconOnly">{{ menu.name }}</h3>
+
+    <!-- <mat-chip-list *ngIf="menu?.chip && !iconOnly">
           <mat-chip >{{menu?.chip?.value}} </mat-chip>
-      </mat-chip-list>         -->
-      <mat-icon *ngIf="chechForChildMenu()" class="sidenav-dropdown-indicator rotate " [ngClass]="{'indicateOpen':menu.open}"> expand_more</mat-icon>
+        </mat-chip-list> -->
+
+    <mat-icon
+      *ngIf="chechForChildMenu()"
+      class="sidenav-dropdown-indicator rotate"
+      [ngClass]="{ indicateOpen: menu.open }"
+    >
+      expand_more
+    </mat-icon>
   </mat-list-item>
 
-  <mat-list-item *ngIf = "menu.link!=false" (click)="menu.open = !menu.open" [routerLink]="[menu.link]" routerLinkActive="is-active">
-    <mat-icon matListIcon iconsmall [matTooltip]="menu.tooltip" [svgIcon]="menu.icon"></mat-icon>
-    <h3 matLine *ngIf="!iconOnly">{{ menu.name }} </h3>
+  <!--with router-->
+  <mat-list-item
+    *ngIf="!menu?.sub?.length || menu.link"
+    (click)="menu.open = !menu.open"
+    [routerLink]="[menu.link]"
+    routerLinkActive="is-active"
+  >
+    <mat-icon
+      matListIcon
+      iconsmall
+      *ngIf="menu.svgIcon"
+      [svgIcon]="menu.svgIcon"
+      [matTooltip]="iconOnly ? menu.tooltip : ''"
+    ></mat-icon>
+    <mat-icon
+      matListIcon
+      iconsmall
+      *ngIf="!menu.svgIcon && menu.icon"
+      [matTooltip]="iconOnly ? menu.tooltip : ''"
+    >
+      {{ menu.icon }}
+    </mat-icon>
+
+    <h3 matLine *ngIf="!iconOnly">{{ menu.name }}</h3>
   </mat-list-item>
 
-  <app-sidemenu-item *ngFor="let submenu of menu?.sub" [menu]="submenu" [iconOnly]="iconOnly" [secondaryMenu]="true"> </app-sidemenu-item>
-
+  <app-sidemenu-item
+    *ngFor="let submenu of menu?.sub"
+    [menu]="submenu"
+    [iconOnly]="iconOnly"
+    [secondaryMenu]="true"
+  >
+  </app-sidemenu-item>
 </mat-nav-list>
