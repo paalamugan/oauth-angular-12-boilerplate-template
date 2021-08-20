@@ -46,9 +46,8 @@ export class GlobalErrorHandlerService {
   }
   
   private consoleError(error: HttpErrorResponse) {
-    if (!environment.production) {
-      console.error(error);
-    }
+    if (environment.production) return;
+    console.error(error);
   }
 
   private handleAuthError() {
