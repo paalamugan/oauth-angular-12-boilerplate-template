@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
+import { snakeCase } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,10 @@ export class LocalStorageService {
 
   constructor() { }
 
-  private prefix: string = environment.APP_NAME + '_';
+  private prefix: string = `${environment.APP_NAME || 'MY_APP'}_`;
 
   private getStorageName(name: string): string {
-    return this.prefix + name;
+    return snakeCase(this.prefix + name).toUpperCase();
   }
 
   set(name: string, data: any): any {
