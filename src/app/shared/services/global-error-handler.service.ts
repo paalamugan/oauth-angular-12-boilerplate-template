@@ -26,11 +26,11 @@ export class GlobalErrorHandlerService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      errMessage = error.message;
+      errMessage = error?.error?.message || error.message;
     }
     
-    this.consoleError(error);
     this.snackbarError(errMessage);
+    this.consoleError(error);
 
     // redirect to login page
     if (error.status === 401) {
@@ -40,14 +40,15 @@ export class GlobalErrorHandlerService {
     return throwError('Something bad happened; please try again later.');
   };
 
+  private snackbarError(message: string) {
+    if (!message) return;
+    this.snackbar.error(message);
+  }
+  
   private consoleError(error: HttpErrorResponse) {
     if (!environment.production) {
       console.error(error);
     }
-  }
-
-  private snackbarError(message: string) {
-    this.snackbar.error(message);
   }
 
   private handleAuthError() {
