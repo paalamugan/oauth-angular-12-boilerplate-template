@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MediaChange, MediaObserver  } from '@angular/flex-layout';
 import { AuthService } from '@app/core/services/auth.service';
 import { Observable } from 'rxjs';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-main',
@@ -22,6 +23,7 @@ export class MainComponent implements OnInit {
   drawerMode: string = 'side';
   isLoading: boolean = false;
   $media: Observable<MediaChange[]>;
+  appName: string = environment.APP_NAME || 'MY APP';
 
   ngOnChanges() {
     this.visibility = this.isVisible ? 'shown' : 'hidden';
