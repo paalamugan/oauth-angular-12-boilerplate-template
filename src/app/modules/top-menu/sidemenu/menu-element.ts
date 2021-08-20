@@ -1,5 +1,13 @@
 import { MenuElement } from '@app/models/menu-element';
 
+/**
+ * @important
+ *  link: must be start with forward slash with full path of that router.
+ *  No need to mention false value in that link property.
+ * 
+ *  use either icon nor svgIcon.
+ */
+
 export const menus: MenuElement[] = [
   {
     name: 'Dashboard',
@@ -9,7 +17,7 @@ export const menus: MenuElement[] = [
   },
   {
     name: 'Nav Link 1',
-    icon: 'session',
+    svgIcon: 'session',
     link: '/nav-link-1',
     // 'chip': { 'value': 1, 'color': 'accent' },
     tooltip: 'Nav Link 1',
