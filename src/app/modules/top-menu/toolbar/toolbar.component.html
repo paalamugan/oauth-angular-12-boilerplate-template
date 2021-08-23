@@ -1,27 +1,29 @@
 <!-- <stbui-loading *ngIf="showLoading"></stbui-loading> -->
-<mat-toolbar class="topmenubackground">  
-	<button mat-icon-button (click)="sidenav.toggle();drawer.toggle();" *ngIf="matDrawerShow">
-        <i class="material-icons app-toolbar-menu">menu </i>
-    </button> 
-    <button mat-icon-button (click)="sidenav.toggle();" *ngIf="!matDrawerShow">
-        <i class="material-icons app-toolbar-menu">menu </i>
-    </button>
+<mat-toolbar class="topmenubackground">
+  <button mat-icon-button (click)="sidenav.toggle();drawer.toggle();" *ngIf="matDrawerShow">
+    <i class="material-icons app-toolbar-menu">menu </i>
+  </button>
+  <button mat-icon-button (click)="sidenav.toggle();" *ngIf="!matDrawerShow">
+    <i class="material-icons app-toolbar-menu">menu </i>
+  </button>
 
-    <span class="spacer"></span>
+  <app-breadcrumb></app-breadcrumb>
 
-    <!-- <button  mat-icon-button (click)="searchOpen = !searchOpen" fxHide="true" [fxHide.gt-xs]="false">
+  <span class="spacer"></span>
+
+  <!-- <button  mat-icon-button (click)="searchOpen = !searchOpen" fxHide="true" [fxHide.gt-xs]="false">
         <i class="material-icons">search</i>
     </button> -->
-    <!-- <app-search-bar [open]="searchOpen"></app-search-bar> -->
+  <!-- <app-search-bar [open]="searchOpen"></app-search-bar> -->
 
-    <app-fullscreen></app-fullscreen>
+  <app-fullscreen></app-fullscreen>
 
-    <!-- <app-toolbar-notification [notifications]="toolbarHelpers?.notifications"></app-toolbar-notification> -->
+  <!-- <app-toolbar-notification [notifications]="toolbarHelpers?.notifications"></app-toolbar-notification> -->
 
-    <app-user-menu></app-user-menu>
-    
-     <!-- <button mat-icon-button (click)="sidebar.toggle();">
+  <app-user-menu></app-user-menu>
+
+  <!-- <button mat-icon-button (click)="sidebar.toggle();">
         <i class="material-icons app-toolbar-menu">menu </i>
     </button> -->
-    
+
 </mat-toolbar>

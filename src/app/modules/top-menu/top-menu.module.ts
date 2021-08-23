@@ -15,8 +15,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 
 import { AngularMaterialModule } from '@app/core/modules/angular-material.module';
+import { SharedModule } from '@app/shared/shared.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    suppressScrollX: true
+  suppressScrollX: true,
 };
 
 @NgModule({
@@ -28,14 +29,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SearchBarComponent,
     FullscreenComponent,
     SidebarComponent,
-    UserMenuComponent
+    UserMenuComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     PerfectScrollbarModule,
     FlexLayoutModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SharedModule,
   ],
   exports: [
     SidemenuComponent,
@@ -45,13 +47,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SearchBarComponent,
     FullscreenComponent,
     SidebarComponent,
-    UserMenuComponent
+    UserMenuComponent,
   ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
-  ]
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+  ],
 })
 export class TopMenuModule {}
