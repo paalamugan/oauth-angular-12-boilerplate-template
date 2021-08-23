@@ -1,0 +1,19 @@
+.mat-bread-crumb {
+  min-height: 30px;
+  max-height: 40px;
+  background-color: #e8eaf6;
+  padding: 0 5px;
+}
+.mat-bread-crumb-list {
+  padding-bottom: 8px;
+}
+.mat-bread-crumb-list-item {
+  font-size: 15px;
+}
+
+.mat-bread-crumb-spacer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: -30px;
+}

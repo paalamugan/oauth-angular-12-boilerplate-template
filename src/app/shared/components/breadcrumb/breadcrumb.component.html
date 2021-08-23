@@ -1,0 +1,38 @@
+<mat-toolbar
+  class="mat-bread-crumb"
+  [ngStyle]="{ 'background-color': bgColor }"
+>
+  <mat-list class="mat-bread-crumb-list" *ngIf="breadcrumbs.length">
+    <mat-list-item>
+      <span class="mat-bread-crumb-spacer">
+        <span
+          class="flex items-center"
+          *ngFor="let item of breadcrumbs; let i = index"
+        >
+          <a
+            *ngIf="item?.url"
+            [routerLink]="item?.url"
+            class="mat-bread-crumb-list-item"
+            [ngStyle]="{ 'font-size': fontSize }"
+            [ngStyle]="{ color: fontColor }"
+          >
+            {{ item.label }}
+          </a>
+          <span
+            *ngIf="!item?.url"
+            class="mat-bread-crumb-list-item"
+            [ngStyle]="{ 'font-size': fontSize }"
+            [ngStyle]="{ color: lastLinkColor }"
+            >{{ item.label }}</span
+          >
+          <!-- <span>{{ symbol }}</span> -->
+          <mat-icon
+            [ngStyle]="{ color: lastLinkColor }"
+            *ngIf="breadcrumbs.length !== i + 1"
+            >chevron_right</mat-icon
+          >
+        </span>
+      </span>
+    </mat-list-item>
+  </mat-list>
+</mat-toolbar>
