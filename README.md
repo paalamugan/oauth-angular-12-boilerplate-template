@@ -7,6 +7,7 @@
 - [Learn FlexLayout](https://github.com/angular/flex-layout)
 - [Learn Angular Material](https://material.angular.io/)
 - [Learn Tailwind](https://tailwindcss.com/)
+- [Learn Tailwind CSS Sheet](https://nerdcave.com/tailwind-cheat-sheet)
 
 ## Get Started
 
