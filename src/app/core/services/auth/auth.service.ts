@@ -5,20 +5,19 @@ import { LocalStorageService } from '@app/shared/services/local-storage.service'
 // import { AngularFireAuth } from '@angular/fire/auth';
 // import { auth } from 'firebase/app';
 import { Observable, of } from 'rxjs';
+import { IAuthService } from './auth.service.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService {
-
+export class AuthService implements IAuthService {
   constructor(
     private http: HttpClient,
-    private localStorage: LocalStorageService,
-    // private angularFireAuth: AngularFireAuth
-    ) { }
+    private localStorage: LocalStorageService // private angularFireAuth: AngularFireAuth
+  ) {}
 
   getAuthorizationToken(): string {
-    return this.localStorage.get(this.localStorage.session)?.token || null;
+    return this.localStorage.get(this.localStorage.session)?.token || '';
   }
 
   isAuthenticated(): boolean {
@@ -31,30 +30,15 @@ export class AuthService {
   }
 
   signup(data: any): Observable<any> {
-    // return this.http.post(apiRoutes.AUTH.SIGNUP, data);
-    return of({
-      user: {
-        username: data.username || 'John Doe',
-        email: data.email || 'john.doe@gmail.com'
-      },
-      token: 'fakeToken1'
-    });
+    return this.http.post(apiRoutes.AUTH.SIGNUP, data);
   }
 
   login(data: any): Observable<any> {
-    // return this.http.post(apiRoutes.AUTH.LOGIN, data);
-    return of({
-      user: {
-        username: data.username || 'John Doe',
-        email: 'john.doe@gmail.com'
-      },
-      token: 'fakeToken1'
-    });
+    return this.http.post(apiRoutes.AUTH.LOGIN, data);
   }
 
   logout(): Observable<any> {
-    // return this.http.get(apiRoutes.AUTH.LOGOUT);
-    return of({});
+    return this.http.get(apiRoutes.AUTH.LOGOUT);
   }
 
   // googleLogin() {
@@ -66,5 +50,4 @@ export class AuthService {
   // googleLogout() {
   //   return this.angularFireAuth.auth.signOut();
   // }
-
 }

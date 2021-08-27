@@ -18,6 +18,8 @@ node: v14.17.5
 npm: 6.14.14
 ```
 
+- Switch node engine
+
 ```sh
 nvm use
 ```

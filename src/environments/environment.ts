@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  APP_NAME: 'MY APP',
-  API_END_POINT: '/v1',
+  isEnableMock: true,
+  appName: 'MY APP',
+  apiEndPoint: '/v1',
   firebaseConfig: {
     apiKey: '',
     authDomain: '',
@@ -13,7 +14,7 @@ export const environment = {
     projectId: '',
     storageBucket: '',
     messagingSenderId: '',
-    appId: ''
+    appId: '',
   },
 };
 

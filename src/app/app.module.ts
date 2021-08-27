@@ -7,11 +7,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { mockServiceProviders } from './mock';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -19,9 +18,9 @@ import { SharedModule } from './shared/shared.module';
     // AngularFirestoreModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [...mockServiceProviders],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

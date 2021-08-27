@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@app/core/services/auth.service';
+import { AuthService } from '@app/core/services/auth/auth.service';
 import { SessionService } from '@app/shared/services/session.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   state = {
     username: '',
-    password: ''
-  }
-  
+    password: '',
+  };
+
   constructor(
     private auth: AuthService,
-    private session: SessionService, 
+    private session: SessionService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     this.auth.login(this.state).subscribe((data) => {
@@ -31,7 +29,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  oAuthLogin() {
-    
-  }
+  oAuthLogin() {}
 }

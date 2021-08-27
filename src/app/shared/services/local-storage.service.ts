@@ -11,7 +11,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  private prefix: string = `${environment.APP_NAME || 'MY_APP'}_`;
+  private prefix: string = `${environment.appName || 'MY_APP'}_`;
 
   private getStorageName(name: string): string {
     return snakeCase(this.prefix + name).toUpperCase();

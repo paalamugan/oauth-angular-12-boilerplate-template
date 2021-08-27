@@ -7,7 +7,8 @@
     "build": "cross-env NODE_ENV=production ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "compodoc": "npx compodoc -p tsconfig.json src"
+    "compodoc": "npx compodoc -p tsconfig.json src",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -82,7 +83,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "ng build --prod"
+      "pre-push": "ng build --configuration production"
     }
   },
   "lint-staged": {

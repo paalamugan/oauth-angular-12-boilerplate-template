@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@app/core/services/auth.service';
+import { AuthService } from '@app/core/services/auth/auth.service';
 import { SessionService } from '@app/shared/services/session.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-
   state: any = {
     username: '',
     email: '',
-    password: ''
-  }
+    password: '',
+  };
   constructor(
     private auth: AuthService,
-    private session: SessionService, 
+    private session: SessionService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     this.auth.signup(this.state).subscribe((data) => {
