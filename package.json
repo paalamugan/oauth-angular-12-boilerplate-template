@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --poll 1000 --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "cross-env NODE_ENV=production ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "compodoc": "npx compodoc -p tsconfig.json src"
@@ -59,6 +59,7 @@
     "@types/moment": "^2.13.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.2",
+    "compodoc": "0.0.41",
     "cross-env": "^7.0.3",
     "husky": "^7.0.2",
     "jasmine-core": "~3.8.0",
