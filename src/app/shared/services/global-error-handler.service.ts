@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { throwError } from 'rxjs';
@@ -12,6 +12,7 @@ import { SnackbarService } from './snackbar.service';
 export class GlobalErrorHandlerService {
 
   constructor(
+    private zone: NgZone,
     private router:Router, 
     private snackbar: SnackbarService,
     private session: SessionService
@@ -52,7 +53,7 @@ export class GlobalErrorHandlerService {
 
   private handleAuthError() {
     this.session.clearSession();
-    this.router.navigateByUrl('/login');
+    this.zone.run(() => this.router.navigateByUrl('/login'));
   }
 
 }
