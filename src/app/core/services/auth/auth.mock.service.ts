@@ -26,7 +26,7 @@ export class AuthService implements IAuthService {
   }
 
   getSession(): Observable<any> {
-    return mockResponse(this.localStorage.get(this.localStorage.session));
+    return mockResponse(this.localStorage.get(this.localStorage.session), 0);
   }
 
   signup(data: any): Observable<any> {
@@ -36,7 +36,7 @@ export class AuthService implements IAuthService {
         email: data?.email || 'john.doe@gmail.com',
       },
       token: 'fakeToken1',
-    });
+    }, 0);
   }
 
   login(data: any): Observable<any> {
@@ -46,11 +46,11 @@ export class AuthService implements IAuthService {
         email: `${data?.username?.replace(/\s+/, '')}@gmail.com`,
       },
       token: 'fakeToken1',
-    });
+    }, 0);
   }
 
   logout(): Observable<any> {
-    return of({});
+    return mockResponse({}, 0);
   }
 
   // googleLogin() {
