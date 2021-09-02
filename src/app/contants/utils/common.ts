@@ -1,7 +1,7 @@
 import { Observable, Subject, defer, delay, of } from "rxjs"
 import { finalize } from "rxjs/operators"
 
-export function delayObservable<T>(data: T): Observable<T> {
+export function mockResponse<T>(data: T): Observable<T> {
   return of(data).pipe(delay(1500));
 }
   
