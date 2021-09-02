@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.auth.login(this.state).pipe(indicateLoading(loading$)).subscribe((data) => {
+    this.auth.login(this.state).pipe(indicateLoading(this.loading$)).subscribe((data) => {
       this.session.setSession(data);
       this.router.navigateByUrl('/dashboard');
     });
