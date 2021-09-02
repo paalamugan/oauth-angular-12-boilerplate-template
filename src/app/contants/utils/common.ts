@@ -1,5 +1,5 @@
-import { Observable, Subject, defer, delay, of } from "rxjs"
-import { finalize } from "rxjs/operators"
+import { Observable, Subject, defer, of } from "rxjs"
+import { finalize, delay } from "rxjs/operators"
 
 export const mockResponse = <T>(data: T): Observable<T> => {
   return of(data).pipe(delay(1500));
