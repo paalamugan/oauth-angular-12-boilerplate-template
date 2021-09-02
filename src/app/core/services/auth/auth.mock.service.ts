@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { apiRoutes } from '@app/contants';
+import { apiRoutes, mockResponse } from '@app/contants';
 import { LocalStorageService } from '@app/shared/services/local-storage.service';
 // import { AngularFireAuth } from '@angular/fire/auth';
 // import { auth } from 'firebase/app';
@@ -26,11 +26,11 @@ export class AuthService implements IAuthService {
   }
 
   getSession(): Observable<any> {
-    return of(this.localStorage.get(this.localStorage.session));
+    return mockResponse(this.localStorage.get(this.localStorage.session));
   }
 
   signup(data: any): Observable<any> {
-    return of({
+    return mockResponse({
       user: {
         username: data?.username || 'John Doe',
         email: data?.email || 'john.doe@gmail.com',
@@ -40,7 +40,7 @@ export class AuthService implements IAuthService {
   }
 
   login(data: any): Observable<any> {
-    return of({
+    return mockResponse({
       user: {
         username: data?.username || 'John Doe',
         email: `${data?.username?.replace(/\s+/, '')}@gmail.com`,
