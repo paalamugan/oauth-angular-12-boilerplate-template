@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { AuthService } from '@app/core/services/auth/auth.service';
 import { SessionService } from '@app/shared/services/session.service';
+import { indicateLoading } from '@app/contants';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ export class LoginComponent implements OnInit {
     username: '',
     password: '',
   };
+  loading$ = new Subject<boolean>();
 
   constructor(
     private auth: AuthService,
@@ -23,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.auth.login(this.state).subscribe((data) => {
+    this.auth.login(this.state).pipe(indicateLoading(loading$)).subscribe((data) => {
       this.session.setSession(data);
       this.router.navigateByUrl('/dashboard');
     });
