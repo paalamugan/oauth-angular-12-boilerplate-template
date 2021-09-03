@@ -30,6 +30,20 @@ nvm use
 npm install
 ```
 
+## Mock Service Setup (enable/disable)
+
+- Go to `/src/environments/environment.ts` file for development.
+- Go to `/src/environments/environment.prod.ts` for production.
+- Once get into that file you will see `isEnableMock` property.
+
+**Enable Mock Service**
+
+- Just set `isEnableMock` property is `true`
+
+**Disable Mock Service**
+
+- Just set `isEnableMock` property is `false`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.1.
 
 ## Development server
