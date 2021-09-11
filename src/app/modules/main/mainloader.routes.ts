@@ -15,14 +15,6 @@ export const appRoutes: Routes = [
     children: [
       {
         path: 'dashboard',
-        data: {
-          breadcrumb: [
-            {
-              label: 'Dashboard',
-              url: '/dashboard',
-            },
-          ],
-        },
         loadChildren: () =>
           import('@app/modules/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
@@ -30,14 +22,6 @@ export const appRoutes: Routes = [
       },
       {
         path: 'nav-link-1',
-        data: {
-          breadcrumb: [
-            {
-              label: 'Nav Link 1',
-              url: '/nav-link-1',
-            },
-          ],
-        },
         loadChildren: () =>
           import('@app/modules/nav-link-1/nav-link-1.module').then(
             (m) => m.NavLink1Module

@@ -1,11 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { apiRoutes, mockResponse } from '@app/contants';
+import { apiRoutes, mockResponse } from '@app/common';
 import { LocalStorageService } from '@app/shared/services/local-storage.service';
 // import { AngularFireAuth } from '@angular/fire/auth';
 // import { auth } from 'firebase/app';
 import { Observable, of } from 'rxjs';
 import { IAuthService } from './auth.service.interface';
+
+const fakeData = (data: any) => ({
+  user: {
+    username: data?.username || (data?.email ? data?.email.split('@')[0] : ''),
+    email: data?.email,
+  },
+  token: 'fakeToken1',
+});
 
 @Injectable({
   providedIn: 'root',
@@ -26,27 +34,15 @@ export class AuthService implements IAuthService {
   }
 
   getSession(): Observable<any> {
-    return mockResponse(this.localStorage.get(this.localStorage.session), 0);
+    return mockResponse(this.localStorage.get(this.localStorage.session));
   }
 
   signup(data: any): Observable<any> {
-    return mockResponse({
-      user: {
-        username: data?.username || 'John Doe',
-        email: data?.email || 'john.doe@gmail.com',
-      },
-      token: 'fakeToken1',
-    }, 0);
+    return mockResponse(fakeData(data));
   }
 
   login(data: any): Observable<any> {
-    return mockResponse({
-      user: {
-        username: data?.username || 'John Doe',
-        email: `${data?.username?.replace(/\s+/, '')}@gmail.com`,
-      },
-      token: 'fakeToken1',
-    }, 0);
+    return mockResponse(fakeData(data));
   }
 
   logout(): Observable<any> {

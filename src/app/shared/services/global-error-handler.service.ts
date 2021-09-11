@@ -7,19 +7,17 @@ import { SessionService } from './session.service';
 import { SnackbarService } from './snackbar.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GlobalErrorHandlerService {
-
   constructor(
     private zone: NgZone,
-    private router:Router, 
+    private router: Router,
     private snackbar: SnackbarService,
     private session: SessionService
-  ) { }
+  ) {}
 
   handleError(error: HttpErrorResponse) {
-
     let errMessage = '';
     if (error instanceof Error || error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -27,9 +25,9 @@ export class GlobalErrorHandlerService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      errMessage = error?.error?.message || error.message;
+      errMessage = error?.error?.message || error?.message || error;
     }
-    
+
     this.snackbarError(errMessage);
     this.consoleError(error);
 
@@ -39,13 +37,13 @@ export class GlobalErrorHandlerService {
     }
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
-  };
+  }
 
   private snackbarError(message: string) {
     if (!message) return;
     this.snackbar.error(message);
   }
-  
+
   private consoleError(error: HttpErrorResponse) {
     if (environment.production) return;
     console.error(error);
@@ -55,5 +53,4 @@ export class GlobalErrorHandlerService {
     this.session.clearSession();
     this.zone.run(() => this.router.navigateByUrl('/login'));
   }
-
 }

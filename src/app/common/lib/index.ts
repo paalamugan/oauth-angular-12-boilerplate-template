@@ -1,2 +1,2 @@
 export * from './router.animations';
-export * from './common';
+export * from './utils';
