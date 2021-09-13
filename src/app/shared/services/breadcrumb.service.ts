@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Breadcrumb, BreadcrumbCustomLabels } from '@app/models/common';
+import { Breadcrumb, BreadcrumbCustomLabels } from '@app/models/breadcrumb';
 import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
@@ -10,9 +10,7 @@ export class BreadcrumbService {
   updateBreadcrumbLabels: BehaviorSubject<BreadcrumbCustomLabels> =
     new BehaviorSubject<BreadcrumbCustomLabels>({});
 
-  updateBreadcrumb: BehaviorSubject<Breadcrumb[]> = new BehaviorSubject<
-    Breadcrumb[]
-  >([]);
+  updateBreadcrumb: BehaviorSubject<Breadcrumb[]> = new BehaviorSubject<Breadcrumb[]>([]);
 
   constructor() {}
 

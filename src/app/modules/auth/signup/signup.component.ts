@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { indicateLoading } from '@app/common';
 import { AuthService } from '@app/core/services/auth/auth.service';
 import { SessionService } from '@app/shared/services/session.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -14,19 +16,23 @@ export class SignupComponent implements OnInit {
     email: '',
     password: '',
   };
-  constructor(
-    private auth: AuthService,
-    private session: SessionService,
-    private router: Router
-  ) {}
+  loading$ = new Subject<boolean>();
+  loading: boolean = false;
+
+  constructor(private auth: AuthService, private session: SessionService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
-    this.auth.signup(this.state).subscribe((data) => {
-      this.session.setSession(data);
-      this.router.navigateByUrl('/dashboard');
-    });
+    this.loading = true;
+    this.auth
+      .signup(this.state)
+      .pipe(indicateLoading(this.loading$))
+      .subscribe((data) => {
+        this.session.setSession(data);
+        this.router.navigateByUrl('/dashboard');
+        this.loading = false;
+      });
   }
 
   goBack() {

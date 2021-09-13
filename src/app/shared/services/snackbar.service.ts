@@ -4,49 +4,56 @@ import { Snackbar } from '@app/models/snackbar';
 import { SnackbarComponent } from '../components/snackbar/snackbar.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SnackbarService {
+  constructor(private snackBar: MatSnackBar, private zone: NgZone) {}
 
-  constructor(private snackBar: MatSnackBar, private zone: NgZone) { }
+  open(
+    message: string,
+    {
+      duration = 30000,
+      type = 'success',
+      verticalPosition = 'top',
+      horizontalPosition = 'center',
+    }: Snackbar = {}
+  ) {
+    this.dismiss();
 
-  open(message: string, { 
-    duration = 6000, 
-    type = 'success', 
-    verticalPosition = 'top', 
-    horizontalPosition = 'center'  }: Snackbar = {}) {
-
-    duration = duration || 6000;
-    type = type || 'success';
-    verticalPosition = verticalPosition || 'top';
-    horizontalPosition = horizontalPosition || 'center';
-
-    this.snackBar.dismiss();
     this.zone.run(() => {
-      this.snackBar.openFromComponent(SnackbarComponent, {
+      this.snackBar.open(message, 'Dismiss', {
         duration,
         verticalPosition,
         horizontalPosition,
-        data: { message, type }
+        data: { message, type },
       });
-    });
 
+      // this.snackBar.openFromComponent(SnackbarComponent, {
+      //   duration,
+      //   verticalPosition,
+      //   horizontalPosition,
+      //   data: { message, type },
+      // });
+    });
+  }
+
+  dismiss() {
+    this.snackBar.dismiss();
   }
 
   success(message: string, options?: Snackbar) {
-    this.open(message, { type: 'succcess', ...options })
+    this.open(message, { type: 'succcess', ...options });
   }
 
   error(message: string, options?: Snackbar) {
-    this.open(message, { type: 'error', ...options })
+    this.open(message, { type: 'error', ...options });
   }
 
   warn(message: string, options?: Snackbar) {
-    this.open(message, { type: 'warn', ...options })
+    this.open(message, { type: 'warn', ...options });
   }
 
   info(message: string, options?: Snackbar) {
-    this.open(message, { type: 'info', ...options })
+    this.open(message, { type: 'info', ...options });
   }
-
 }

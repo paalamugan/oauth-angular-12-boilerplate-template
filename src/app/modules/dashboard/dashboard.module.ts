@@ -6,21 +6,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardWidgetModule } from '../dashboard-widget/dashboard-widget.module';
 
 export const appRoutes: Routes = [
-    { path: '', component: DashboardComponent },
-]
+  {
+    path: '',
+    data: {
+      breadcrumb: [
+        {
+          label: 'Dashboard',
+        },
+      ],
+    },
+    component: DashboardComponent,
+  },
+];
 
 @NgModule({
-    declarations: [
-        DashboardComponent
-    ],
-    imports: [
-        CommonModule,
-        FlexLayoutModule,
-        DashboardWidgetModule,
-        RouterModule.forChild(appRoutes),
-    ],
+  declarations: [DashboardComponent],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    DashboardWidgetModule,
+    RouterModule.forChild(appRoutes),
+  ],
 
-  exports: [ ],
-  providers:[]
+  exports: [],
+  providers: [],
 })
-export class DashboardModule { }
+export class DashboardModule {}

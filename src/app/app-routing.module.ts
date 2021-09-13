@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { httpInterceptorProviders } from './core/http-interceptor';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
   {
@@ -20,8 +21,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/login',
-    pathMatch: 'full',
+    component: PageNotFoundComponent,
   },
 ];
 

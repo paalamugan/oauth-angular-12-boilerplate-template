@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Breadcrumb, BreadcrumbCustomLabels } from '@app/models/common';
+import { Breadcrumb, BreadcrumbCustomLabels } from '@app/models/breadcrumb';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -33,34 +33,30 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadcrumbService.updateBreadcrumbLabels.subscribe(
-      (data: BreadcrumbCustomLabels) => {
-        for (const label in data) {
-          if (data.hasOwnProperty(label)) {
-            this.breadcrumbs.map((breadcrumb) => {
-              const labelParams = breadcrumb.label.match(/[^{{]+(?=\}})/g);
-              if (labelParams) {
-                for (const labelParam of labelParams) {
-                  const dynamicData = data[label] as any;
-                  if (labelParam === label) {
-                    breadcrumb.label = breadcrumb.label.replace(
-                      '{{' + labelParam + '}}',
-                      dynamicData
-                    );
-                  }
+    this.breadcrumbService.updateBreadcrumbLabels.subscribe((data: BreadcrumbCustomLabels) => {
+      for (const label in data) {
+        if (data.hasOwnProperty(label)) {
+          this.breadcrumbs.map((breadcrumb) => {
+            const labelParams = breadcrumb.label.match(/[^{{]+(?=\}})/g);
+            if (labelParams) {
+              for (const labelParam of labelParams) {
+                const dynamicData = data[label] as any;
+                if (labelParam === label) {
+                  breadcrumb.label = breadcrumb.label.replace(
+                    '{{' + labelParam + '}}',
+                    dynamicData
+                  );
                 }
               }
-            });
-          }
+            }
+          });
         }
       }
-    );
+    });
 
-    this.breadcrumbService.updateBreadcrumb.subscribe(
-      (breadcrumbs: Breadcrumb[]) => {
-        this.updateData(this.activatedRoute, breadcrumbs);
-      }
-    );
+    this.breadcrumbService.updateBreadcrumb.subscribe((breadcrumbs: Breadcrumb[]) => {
+      this.updateData(this.activatedRoute, breadcrumbs);
+    });
   }
 
   breadCrumbData(): void {
@@ -82,14 +78,9 @@ export class BreadcrumbComponent implements OnInit {
       });
   }
 
-  private updateData(
-    route: ActivatedRoute,
-    breadcrumbs: Breadcrumb[] | null
-  ): void {
+  private updateData(route: ActivatedRoute, breadcrumbs: Breadcrumb[] | null): void {
     if (route.snapshot.data.breadcrumb || breadcrumbs?.length) {
-      const data = route.snapshot.data.breadcrumb
-        ? route.snapshot.data.breadcrumb
-        : breadcrumbs;
+      const data = route.snapshot.data.breadcrumb ? route.snapshot.data.breadcrumb : breadcrumbs;
       const breadcrumb = JSON.parse(JSON.stringify(data));
       breadcrumb.map((crumb: { url: string; label: string }) => {
         const urlChunks = crumb.url?.split('/') || [];
@@ -106,10 +97,7 @@ export class BreadcrumbComponent implements OnInit {
           for (const labelParam of labelParams) {
             const routerParamID = this.params[labelParam.trim()];
             if (routerParamID) {
-              crumb.label = crumb.label.replace(
-                '{{' + labelParam + '}}',
-                routerParamID
-              );
+              crumb.label = crumb.label.replace('{{' + labelParam + '}}', routerParamID);
             } else {
             }
           }
