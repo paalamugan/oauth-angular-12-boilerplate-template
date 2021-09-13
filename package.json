@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --poll 1000 --proxy-config proxy.conf.json",
+    "dev": "npm start",
     "build": "cross-env NODE_ENV=production ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -37,6 +38,7 @@
     "compass-mixins": "^0.12.10",
     "core-js": "^3.16.2",
     "firebase": "^8.10.0",
+    "gsap": "^3.7.1",
     "hammerjs": "^2.0.8",
     "highlight.js": "^11.2.0",
     "jquery": "^3.6.0",
@@ -55,6 +57,7 @@
     "@angular-devkit/build-angular": "~12.2.1",
     "@angular/cli": "~12.2.1",
     "@angular/compiler-cli": "~12.2.0",
+    "@types/gsap": "^3.0.0",
     "@types/jasmine": "~3.8.0",
     "@types/jasminewd2": "^2.0.10",
     "@types/lodash": "^4.14.172",

@@ -17,3 +17,8 @@
   align-items: center;
   margin-left: -25px;
 }
+
+mat-list-item:hover {
+  background: transparent;
+  cursor: default;
+}

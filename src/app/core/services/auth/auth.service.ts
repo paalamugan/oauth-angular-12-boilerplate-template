@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { apiRoutes } from '@app/contants';
+import { apiRoutes } from '@app/common';
 import { LocalStorageService } from '@app/shared/services/local-storage.service';
 // import { AngularFireAuth } from '@angular/fire/auth';
 // import { auth } from 'firebase/app';
