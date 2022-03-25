@@ -27,6 +27,8 @@
     "@angular/platform-browser": "~12.2.2",
     "@angular/platform-browser-dynamic": "~12.2.2",
     "@angular/router": "~12.2.2",
+    "@ngneat/hot-toast": "^3.4.3",
+    "@ngneat/overview": "^2.0.2",
     "@swimlane/ngx-charts": "^18.0.1",
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/typography": "^0.4.1",
