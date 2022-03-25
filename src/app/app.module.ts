@@ -11,6 +11,8 @@ import { mockServiceProviders } from './mock';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { HotToastModule } from '@ngneat/hot-toast';
+import EffectsModule, { OfflineEffect } from '@app/effects';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -22,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
+    HotToastModule.forRoot(),
+    EffectsModule.register([OfflineEffect]),
     // AngularFireModule.initializeApp(environment.firebaseConfig),
     // AngularFirestoreModule,
   ],
